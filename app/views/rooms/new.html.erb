@@ -16,6 +16,18 @@
         <label class='chat-room-form__label' for='chat_room_チャットメンバー'>チャットメンバー</label>
       </div>
       <div class='chat-room-form__field--right'>
+      <select name="room[user_ids][]">
+           <option value="">チャットするユーザーを選択してください</option>
+           <%# <% User.all.each do |user| %> %>
+           <%# 全てのユーザーから選択する場合は上記 %>
+           <% User.where.not(id: current_user.id).each do |user| %>
+           <%# 上記は現在ログインしているユーザーを除いた選択肢 %>
+           <%# モデル名.where.not("条件")は、条件に一致したレコード以外の値を配列として取得できる。 %>
+           <%# <option><%= user.name </option> %>
+           <option value=<%= user.id %>><%= user.name %></option>
+           <input name="room[user_ids][]" type="hidden" value=<%= current_user.id %>>
+           <% end %>
+        </select>
       </div>
     </div>
     <div class='chat-room-form__field'>
