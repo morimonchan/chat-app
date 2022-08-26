@@ -7,4 +7,7 @@ class User < ApplicationRecord
  validates :name, presence: true
 #  もはや定型文。空の場合はDBに保存しないというバリデーション
 
+has_many :room_users
+  has_many :rooms, through: :room_users
+
 end
