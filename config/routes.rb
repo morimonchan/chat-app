@@ -6,4 +6,7 @@ Rails.application.routes.draw do
   resources :users, only: [:edit, :update]
   # これによって/usersのパスに対応するルーティングが生成される、なお、onlyによって生成するルーティングを制限している
   # editは編集、updateは更新を表している。
+  resources :rooms, only: [:new, :create]
+  # 新規チャットルームの作成で動くアクションはnewとcreateのみなので、このコードになる
+
 end
