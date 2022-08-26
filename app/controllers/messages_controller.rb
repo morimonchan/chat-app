@@ -20,7 +20,7 @@ class MessagesController < ApplicationController
   private
 
   def message_params
-    params.require(:message).permit(:content).merge(user_id: current_user.id)
+    params.require(:message).permit(:content, :image).merge(user_id: current_user.id)
     # requireリクワイアメソッド
     # 送信されたパラメーターの情報を持つparamsが、使用できるメソッドです。
     # requireメソッドは、パラメーターからどの情報を取得するか、選択します。
